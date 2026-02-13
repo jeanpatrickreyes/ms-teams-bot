@@ -19,6 +19,14 @@ adapter.onTurnError = async (context: TurnContext, error: any) => {
 
 const bot = new AIPMBot();
 
+app.get("/", (req, res) => {
+  res.send("Bot is running ✅");
+});
+
+app.get("/health", (req, res) => {
+  res.status(200).send("OK");
+});
+
 // Messages endpoint (Teams/Azure Bot will POST here)
 app.post("/api/messages", (req, res) => {
   adapter.processActivity(req, res, async (context) => {
